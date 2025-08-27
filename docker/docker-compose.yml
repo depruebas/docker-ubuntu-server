@@ -6,6 +6,7 @@ services:
       args:
         UID: $UserUID
     container_name: ubuntu_24_server
+    hostname: ubuntu_24_server
     tty: true     # Keep the container running with an interactive shell
     stdin_open: true
     volumes:
