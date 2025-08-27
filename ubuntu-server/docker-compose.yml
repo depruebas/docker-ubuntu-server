@@ -1,0 +1,24 @@
+services:
+  ubuntu-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        UID: $UserUID
+    container_name: ubuntu_24_server
+    tty: true     # Keep the container running with an interactive shell
+    stdin_open: true
+    volumes:
+      - /bases-de-datos/mysql-data:/var/lib/mysql
+      - ./config:/home/devuser
+
+    ports:
+      - "3006:3306"
+
+    networks:
+      mysql-network:
+        ipv4_address: 172.23.0.6
+
+networks:
+  mysql-network:
+    external: true
