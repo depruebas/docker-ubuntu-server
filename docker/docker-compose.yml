@@ -10,7 +10,7 @@ services:
     tty: true     # Keep the container running with an interactive shell
     stdin_open: true
     volumes:
-      - /bases-de-datos/mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
       - ./config:/home/devuser
 
     ports:
@@ -20,6 +20,9 @@ services:
       mysql-network:
         ipv4_address: 172.23.0.6
 
+volumes:
+  mysql-data:
+  
 networks:
   mysql-network:
     external: true

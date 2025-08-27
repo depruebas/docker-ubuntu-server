@@ -21,19 +21,19 @@ create_network:
 
 ubuntuserver:
 	@echo "Starting MySql replica 1 container..."
-	cd $(BASE_DIR)/ubuntu-server && UserUID=${U_ID} docker-compose up -d
+	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose up -d
 
 down:
 	@echo "Destruyendo containers ..."
-	cd $(BASE_DIR)/ubuntu-server && UserUID=${U_ID} docker-compose down
+	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose down
 
 build:
 	@echo 'Reiniciando containers ...'
-	cd $(BASE_DIR)/ubuntu-server && UserUID=${U_ID} docker-compose build
+	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose build
 
 stop:
 	@echo "Parando containers ..."
-	cd $(BASE_DIR)/ubuntu-server && UserUID=${U_ID} docker-compose stop
+	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose stop
 
 shell1:
 	@echo "Enter into MySql Rep1 container..."
