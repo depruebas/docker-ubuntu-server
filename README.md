@@ -1,6 +1,18 @@
 <img width="967" height="332" alt="image" src="https://github.com/user-attachments/assets/2593e726-d707-4658-88f1-f190bfec66a5" />
 
 
+A parte de los comandos que abajo menciono para accder al servidor esta habilitada la opción de acceder por ssh.
+
+De esta forma estos servidores pueden utilizarse como pruebas de real con opciones que requieran conexiones por ssh entre servidores.
+
+Para acceder por ssh utilizar:
+
+ssh ubuntu@172.33.0.6  y el passowrd que el mismo que el usuario.
+En mac utilizar ssh -p 2222 ubuntu@localhost
+
+Tanto el puerto como la IP estan configurados y los podeis cambiar en ell docker-compose
+
+
 ### In English below
 
 
@@ -71,6 +83,20 @@ Entrar en el shell del contenedor
 <br><br>
 
 ### English version
+
+
+In addition to the commands listed below for accessing the server, the option to access via SSH is also enabled.
+
+This allows these servers to be used for live testing with options that require SSH connections between servers.
+
+To access via SSH, use:
+
+ssh ubuntu@172.33.0.6 and the same password as your username.
+
+On a Mac, use ssh -p 2222 ubuntu@localhost
+
+Both the port and IP address are configured by default and can be changed in Docker Compose.
+
 
 ⚙️ ## Instructions for use:
 >
