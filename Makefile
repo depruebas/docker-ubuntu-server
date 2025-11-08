@@ -1,13 +1,15 @@
 #!/bin/bash
 
-U_ID = $(shell id -u)
-
 .PHONY: all create_network ubuntuserver
 
-# Define la ruta base del directorio actual
+# Defines the base path of the current directory
 BASE_DIR := $(CURDIR)
-NETWORK_NAME := mysql-network
-SUBNET := 172.23.0.0/24
+
+# Name of the network used in the project
+NETWORK_NAME := server-network
+
+# IP address range used in the project
+SUBNET := 172.33.0.0/24
 
 all: create_network ubuntuserver
 
@@ -20,21 +22,21 @@ create_network:
 	fi
 
 ubuntuserver:
-	@echo "Starting MySql replica 1 container..."
-	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose up -d
+	@echo "Starting Ubuntu Server container..."
+	cd $(BASE_DIR)/docker && docker-compose up -d
 
 down:
-	@echo "Destruyendo containers ..."
-	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose down
+	@echo "Destroy containers ..."
+	cd $(BASE_DIR)/docker && docker-compose down -v
 
 build:
-	@echo 'Reiniciando containers ...'
-	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose build
+	@echo 'Restarting containers ...'
+	cd $(BASE_DIR)/docker && docker-compose build
 
 stop:
-	@echo "Parando containers ..."
-	cd $(BASE_DIR)/docker && UserUID=${U_ID} docker-compose stop
+	@echo "Stop containers ..."
+	cd $(BASE_DIR)/docker && docker-compose stop
 
-shell1:
-	@echo "Enter into MySql Rep1 container..."
-	UserUID=${U_ID} docker exec -it --user ${U_ID} ubuntu_24_server bash
+shell:  # Why --user 1000? because 1000 is the ubuntu user 1000 
+	@echo "Enter into Ubuntu Server container..."
+	docker exec -it --user 1000 ubuntu_server bash
