@@ -38,6 +38,11 @@ RUN mkdir -p /opt/start && mkdir /data
 COPY ./provision/entrypoint.sh /opt/start/entrypoint.sh
 RUN chmod +x /opt/start/entrypoint.sh 
 
+# Crear el usuario ubuntu con contraseña 'ubuntu' y permisos sudo
+RUN id -u ubuntu >/dev/null 2>&1 || useradd -m -s /bin/bash ubuntu && \
+    echo 'ubuntu:ubuntu' | chpasswd && \
+    adduser ubuntu sudo
+
 # Configurar el servidor SSH
 RUN mkdir /var/run/sshd && \
     echo 'PermitRootLogin no' >> /etc/ssh/sshd_config && \

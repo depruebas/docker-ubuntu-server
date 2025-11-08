@@ -26,6 +26,8 @@ echo 'alias la="ls -A"' >> /home/ubuntu/.bashrc
 echo 'alias l="ls -CF"' >> /home/ubuntu/.bashrc 
 echo 'PS1="\[\e[01;33m\]\u\[\e[00m\]@\[\e[01;35m\]\h\[\e[00m\]:\[\e[01;34m\]\w\[\e[00m\]\$ "' >> /home/ubuntu/.bashrc
 
+# Enable sshd deamon
+service ssh start
 
 echo "Go to home and run bash"
 cd /home/ubuntu
